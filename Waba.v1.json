@@ -1,0 +1,1672 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Waba",
+    "version": "1.0",
+    "contact": {
+      "name": "Michael Suárez",
+      "url": "https://waba.kodhe.work"
+    },
+    "description": "The most functional API for send and receive all type of whatsapp messages. This is API is very simple, but most powerfull. You can create any custom solution, from notifications to chatbots. \nThis API is fast, and very complete information compared to others  "
+  },
+  "servers": [
+    {
+      "url": "https://waba.kodhe.work/api/v1",
+      "description": "Main"
+    }
+  ],
+  "paths": {
+    "/instances/qrcode": {
+      "get": {
+        "summary": "0. Generate QRCode",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-instances-qrcode",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "key",
+            "required": true,
+            "description": "Key for instance"
+          }
+        ]
+      }
+    },
+    "/instances/whatsapp/chats": {
+      "get": {
+        "summary": "1. Get list of chats",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "title": "Chat",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "title": "Id",
+                        "type": "object",
+                        "properties": {
+                          "uid": {
+                            "type": "string"
+                          },
+                          "server": {
+                            "type": "string"
+                          },
+                          "user": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "key": {
+                        "type": "string"
+                      },
+                      "canSend": {
+                        "type": "boolean"
+                      },
+                      "canUnread": {
+                        "type": [
+                          "string",
+                          "boolean"
+                        ]
+                      },
+                      "contact": {
+                        "title": "Contact",
+                        "type": "object",
+                        "properties": {
+                          "mentionName": {
+                            "type": "string"
+                          },
+                          "displayName": {
+                            "type": "string"
+                          },
+                          "userid": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "searchName": {
+                            "type": "string"
+                          },
+                          "isMe": {
+                            "type": "boolean"
+                          },
+                          "isUser": {
+                            "type": "boolean"
+                          },
+                          "isGroup": {
+                            "type": "boolean"
+                          },
+                          "isBroadcast": {
+                            "type": "boolean"
+                          },
+                          "isPSA": {
+                            "type": "boolean"
+                          },
+                          "formattedShortNameWithNonBreakingSpaces": {
+                            "type": "string"
+                          },
+                          "formattedShortName": {
+                            "type": "string"
+                          },
+                          "formattedName": {
+                            "type": "string"
+                          },
+                          "formattedUser": {
+                            "type": "string"
+                          },
+                          "isWAContact": {
+                            "type": "string"
+                          },
+                          "isMyContact": {
+                            "type": "string"
+                          },
+                          "showBusinessCheckmark": {
+                            "type": "string"
+                          },
+                          "showBusinessVname": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "isContactBlocked": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "title": "Id",
+                            "type": "object",
+                            "properties": {
+                              "uid": {
+                                "type": "string"
+                              },
+                              "server": {
+                                "type": "string"
+                              },
+                              "user": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "isBusiness": {
+                            "type": "boolean"
+                          },
+                          "statusMute": {
+                            "type": "boolean"
+                          },
+                          "isEnterprise": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "docCount": {
+                        "type": "number"
+                      },
+                      "formattedTitle": {
+                        "type": "string"
+                      },
+                      "groupMetadata": {
+                        "type": "string"
+                      },
+                      "hasUnread": {
+                        "type": "boolean"
+                      },
+                      "isBroadcast": {
+                        "type": "boolean"
+                      },
+                      "isPSA": {
+                        "type": "boolean"
+                      },
+                      "isReadOnly": {
+                        "type": "boolean"
+                      },
+                      "isGroup": {
+                        "type": "boolean"
+                      },
+                      "isUser": {
+                        "type": "boolean"
+                      },
+                      "kind": {
+                        "type": "string"
+                      },
+                      "lastReceivedKey": {
+                        "title": "MessageKey",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "uid": {
+                            "type": "string"
+                          },
+                          "remote": {
+                            "title": "Id",
+                            "type": "object",
+                            "properties": {
+                              "uid": {
+                                "type": "string"
+                              },
+                              "server": {
+                                "type": "string"
+                              },
+                              "user": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "fromMe": {
+                            "type": "boolean"
+                          }
+                        },
+                        "x-examples": {}
+                      },
+                      "linkCount": {
+                        "type": "number"
+                      },
+                      "msgsLength": {
+                        "type": "number"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "notSpam": {
+                        "type": "boolean"
+                      },
+                      "pin": {
+                        "type": "number"
+                      },
+                      "profileImage": {
+                        "type": "string"
+                      },
+                      "shouldAppearInList": {
+                        "type": "boolean"
+                      },
+                      "start": {
+                        "type": "boolean"
+                      },
+                      "t": {
+                        "type": "number",
+                        "description": "Time"
+                      },
+                      "trusted": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-instances-whatsapp-contacts",
+        "description": "Get list of chats"
+      },
+      "parameters": []
+    },
+    "/whatsapp/messages": {
+      "post": {
+        "summary": "2. Get list of messages",
+        "operationId": "post-whatsapp-messages",
+        "responses": {
+          "200": {
+            "description": "OK  ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "title": "Message",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "title": "Id",
+                        "type": "object",
+                        "properties": {
+                          "uid": {
+                            "type": "string"
+                          },
+                          "server": {
+                            "type": "string"
+                          },
+                          "user": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "key": {
+                        "type": "string"
+                      },
+                      "ack": {
+                        "type": "number",
+                        "description": "Still not functional"
+                      },
+                      "body": {
+                        "type": "string"
+                      },
+                      "broadcast": {
+                        "type": "boolean"
+                      },
+                      "caption": {
+                        "type": "string"
+                      },
+                      "cid": {
+                        "type": "string"
+                      },
+                      "containsEmoji": {
+                        "type": "boolean"
+                      },
+                      "dir": {
+                        "type": "string"
+                      },
+                      "eventType": {
+                        "type": "string"
+                      },
+                      "from": {
+                        "title": "Id",
+                        "type": "object",
+                        "properties": {
+                          "uid": {
+                            "type": "string"
+                          },
+                          "server": {
+                            "type": "string"
+                          },
+                          "user": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "hsmEnabled": {
+                        "type": "boolean"
+                      },
+                      "initialPageSize": {
+                        "type": "number"
+                      },
+                      "isBizNotification": {
+                        "type": "boolean"
+                      },
+                      "isBroadcastNotification": {
+                        "type": "boolean"
+                      },
+                      "isDoc": {
+                        "type": "boolean"
+                      },
+                      "isEphemeral": {
+                        "type": "boolean"
+                      },
+                      "isFailed": {
+                        "type": "boolean"
+                      },
+                      "isForwarded": {
+                        "type": "boolean"
+                      },
+                      "isFrequentlyForwarded": {
+                        "type": "boolean"
+                      },
+                      "isFutureproof": {
+                        "type": "boolean"
+                      },
+                      "isGroupMsg": {
+                        "type": "boolean"
+                      },
+                      "isGroupNotification": {
+                        "type": "boolean"
+                      },
+                      "isGroupsV4InviteExpired": {
+                        "type": "boolean"
+                      },
+                      "isMMS": {
+                        "type": "boolean"
+                      },
+                      "isMedia": {
+                        "type": "boolean"
+                      },
+                      "isNotification": {
+                        "type": "boolean"
+                      },
+                      "isPSA": {
+                        "type": "boolean"
+                      },
+                      "isPersistent": {
+                        "type": "boolean"
+                      },
+                      "isProduct": {
+                        "type": "boolean"
+                      },
+                      "isProductInquiry": {
+                        "type": "boolean"
+                      },
+                      "isQuickReply": {
+                        "type": "boolean"
+                      },
+                      "isQuotedMsgAvailable": {
+                        "type": "boolean"
+                      },
+                      "isRTL": {
+                        "type": "boolean"
+                      },
+                      "isRevoked": {
+                        "type": "boolean"
+                      },
+                      "isSentByMe": {
+                        "type": "boolean"
+                      },
+                      "isSentByMeFromWeb": {
+                        "type": "boolean"
+                      },
+                      "isStatusV3": {
+                        "type": "boolean"
+                      },
+                      "isUnreadType": {
+                        "type": "boolean"
+                      },
+                      "isUnsentMedia": {
+                        "type": "boolean"
+                      },
+                      "isUserCreatedType": {
+                        "type": "boolean"
+                      },
+                      "isValidAlbumAsset": {
+                        "type": "boolean"
+                      },
+                      "isValidGroupedSticker": {
+                        "type": "boolean"
+                      },
+                      "messageNumber": {
+                        "type": "number"
+                      },
+                      "notifyName": {
+                        "type": "string"
+                      },
+                      "numTimesForwarded": {
+                        "type": "number"
+                      },
+                      "rtl": {
+                        "type": "number"
+                      },
+                      "self": {
+                        "type": "string"
+                      },
+                      "sender": {
+                        "title": "Id",
+                        "type": "object",
+                        "properties": {
+                          "uid": {
+                            "type": "string"
+                          },
+                          "server": {
+                            "type": "string"
+                          },
+                          "user": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "star": {
+                        "type": "boolean"
+                      },
+                      "subtype": {
+                        "type": "string"
+                      },
+                      "t": {
+                        "type": "number"
+                      },
+                      "to": {
+                        "title": "Id",
+                        "type": "object",
+                        "properties": {
+                          "uid": {
+                            "type": "string"
+                          },
+                          "server": {
+                            "type": "string"
+                          },
+                          "user": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "uploadHash": {
+                        "type": "string",
+                        "description": "When message is media"
+                      },
+                      "mediaObject": {
+                        "type": "object",
+                        "properties": {
+                          "size": {
+                            "type": "number"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "filehash": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "mimeType": {
+                        "type": "string"
+                      },
+                      "decrypted": {
+                        "type": "object",
+                        "properties": {
+                          "hash": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Read messages",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "key",
+            "description": "Instance key",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "title": "MessageQuery",
+                    "type": "object",
+                    "properties": {
+                      "\"from.uid\"": {
+                        "type": "string",
+                        "description": "Filter by received from"
+                      },
+                      "\"to.uid\"": {
+                        "type": "string",
+                        "description": "Filter by sent to"
+                      },
+                      "\"id.remote.uid\"": {
+                        "type": "string",
+                        "description": "Filter by id from remote user. See MessageKey model"
+                      },
+                      "messageNumber": {
+                        "anyOf": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "title": "GtQuery",
+                            "type": "object",
+                            "properties": {
+                              "$gt": {
+                                "type": [
+                                  "number",
+                                  "string",
+                                  "integer"
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "title": "GteQuery",
+                            "type": "object",
+                            "properties": {
+                              "$gte": {
+                                "type": [
+                                  "string",
+                                  "number",
+                                  "integer"
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "title": "LtQuery",
+                            "type": "object",
+                            "properties": {
+                              "$lt": {
+                                "type": [
+                                  "string",
+                                  "number",
+                                  "integer"
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "title": "LteQuery",
+                            "type": "object",
+                            "properties": {
+                              "$lte": {
+                                "type": [
+                                  "string",
+                                  "number",
+                                  "integer"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "sort": {
+                    "title": "Sort",
+                    "type": "object",
+                    "properties": {
+                      "messageNumber": {
+                        "type": "number",
+                        "enum": [
+                          -1,
+                          1
+                        ]
+                      },
+                      "t": {
+                        "type": "number",
+                        "enum": [
+                          1,
+                          -1
+                        ]
+                      }
+                    }
+                  },
+                  "limit": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/instances/whatsapp/message.send": {
+      "put": {
+        "summary": "3. Send a message",
+        "operationId": "put-instances-whatsapp-message.send",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "MessageQueued",
+                  "type": "object",
+                  "properties": {
+                    "cid": {
+                      "type": "string"
+                    },
+                    "key": {
+                      "type": "string"
+                    },
+                    "time": {
+                      "type": "number"
+                    },
+                    "queue": {
+                      "type": "boolean"
+                    },
+                    "ack": {
+                      "type": "number"
+                    },
+                    "media": {
+                      "type": "boolean"
+                    },
+                    "chatId": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {}
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Send a message of any type",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "key",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "document",
+                      "image",
+                      "audio",
+                      "text",
+                      "video"
+                    ]
+                  },
+                  "base64": {
+                    "type": "string",
+                    "description": "Data url representation of attached  file if required"
+                  },
+                  "body": {
+                    "type": "string",
+                    "description": "Text of message"
+                  },
+                  "caption": {
+                    "type": "string",
+                    "description": "Caption of an image, document, or video"
+                  },
+                  "number": {
+                    "type": "string",
+                    "description": "Number with country code, but without +"
+                  },
+                  "chatId": {
+                    "type": "string",
+                    "description": "ChatId. Ex: 111111111@c.us If not passed generated from number"
+                  }
+                },
+                "required": [
+                  "type"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Chat": {
+        "title": "Chat",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "object",
+            "properties": {
+              "uid": {
+                "type": "string"
+              },
+              "server": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
+          "key": {
+            "type": "string"
+          },
+          "canSend": {
+            "type": "boolean"
+          },
+          "canUnread": {
+            "type": [
+              "string",
+              "boolean"
+            ]
+          },
+          "contact": {
+            "title": "Contact",
+            "type": "object",
+            "properties": {
+              "mentionName": {
+                "type": "string"
+              },
+              "displayName": {
+                "type": "string"
+              },
+              "userid": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "searchName": {
+                "type": "string"
+              },
+              "isMe": {
+                "type": "boolean"
+              },
+              "isUser": {
+                "type": "boolean"
+              },
+              "isGroup": {
+                "type": "boolean"
+              },
+              "isBroadcast": {
+                "type": "boolean"
+              },
+              "isPSA": {
+                "type": "boolean"
+              },
+              "formattedShortNameWithNonBreakingSpaces": {
+                "type": "string"
+              },
+              "formattedShortName": {
+                "type": "string"
+              },
+              "formattedName": {
+                "type": "string"
+              },
+              "formattedUser": {
+                "type": "string"
+              },
+              "isWAContact": {
+                "type": "string"
+              },
+              "isMyContact": {
+                "type": "string"
+              },
+              "showBusinessCheckmark": {
+                "type": "string"
+              },
+              "showBusinessVname": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "isContactBlocked": {
+                "type": "string"
+              },
+              "id": {
+                "title": "Id",
+                "type": "object",
+                "properties": {
+                  "uid": {
+                    "type": "string"
+                  },
+                  "server": {
+                    "type": "string"
+                  },
+                  "user": {
+                    "type": "string"
+                  }
+                }
+              },
+              "name": {
+                "type": "string"
+              },
+              "isBusiness": {
+                "type": "boolean"
+              },
+              "statusMute": {
+                "type": "boolean"
+              },
+              "isEnterprise": {
+                "type": "boolean"
+              }
+            }
+          },
+          "docCount": {
+            "type": "number"
+          },
+          "formattedTitle": {
+            "type": "string"
+          },
+          "groupMetadata": {
+            "type": "string"
+          },
+          "hasUnread": {
+            "type": "boolean"
+          },
+          "isBroadcast": {
+            "type": "boolean"
+          },
+          "isPSA": {
+            "type": "boolean"
+          },
+          "isReadOnly": {
+            "type": "boolean"
+          },
+          "isGroup": {
+            "type": "boolean"
+          },
+          "isUser": {
+            "type": "boolean"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "lastReceivedKey": {
+            "title": "MessageKey",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "uid": {
+                "type": "string"
+              },
+              "remote": {
+                "title": "Id",
+                "type": "object",
+                "properties": {
+                  "uid": {
+                    "type": "string"
+                  },
+                  "server": {
+                    "type": "string"
+                  },
+                  "user": {
+                    "type": "string"
+                  }
+                }
+              },
+              "fromMe": {
+                "type": "boolean"
+              }
+            },
+            "x-examples": {}
+          },
+          "linkCount": {
+            "type": "number"
+          },
+          "msgsLength": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "notSpam": {
+            "type": "boolean"
+          },
+          "pin": {
+            "type": "number"
+          },
+          "profileImage": {
+            "type": "string"
+          },
+          "shouldAppearInList": {
+            "type": "boolean"
+          },
+          "start": {
+            "type": "boolean"
+          },
+          "t": {
+            "type": "number",
+            "description": "Time"
+          },
+          "trusted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Contact": {
+        "title": "Contact",
+        "type": "object",
+        "properties": {
+          "mentionName": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "userid": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "searchName": {
+            "type": "string"
+          },
+          "isMe": {
+            "type": "boolean"
+          },
+          "isUser": {
+            "type": "boolean"
+          },
+          "isGroup": {
+            "type": "boolean"
+          },
+          "isBroadcast": {
+            "type": "boolean"
+          },
+          "isPSA": {
+            "type": "boolean"
+          },
+          "formattedShortNameWithNonBreakingSpaces": {
+            "type": "string"
+          },
+          "formattedShortName": {
+            "type": "string"
+          },
+          "formattedName": {
+            "type": "string"
+          },
+          "formattedUser": {
+            "type": "string"
+          },
+          "isWAContact": {
+            "type": "string"
+          },
+          "isMyContact": {
+            "type": "string"
+          },
+          "showBusinessCheckmark": {
+            "type": "string"
+          },
+          "showBusinessVname": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "isContactBlocked": {
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "object",
+            "properties": {
+              "uid": {
+                "type": "string"
+              },
+              "server": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "isBusiness": {
+            "type": "boolean"
+          },
+          "statusMute": {
+            "type": "boolean"
+          },
+          "isEnterprise": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Id": {
+        "title": "Id",
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string"
+          },
+          "server": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          }
+        }
+      },
+      "MessageKey": {
+        "title": "MessageKey",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "remote": {
+            "title": "Id",
+            "type": "object",
+            "properties": {
+              "uid": {
+                "type": "string"
+              },
+              "server": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
+          "fromMe": {
+            "type": "boolean"
+          }
+        },
+        "x-examples": {}
+      },
+      "MessageQuery": {
+        "title": "MessageQuery",
+        "type": "object",
+        "properties": {
+          "\"from.uid\"": {
+            "type": "string",
+            "description": "Filter by received from"
+          },
+          "\"to.uid\"": {
+            "type": "string",
+            "description": "Filter by sent to"
+          },
+          "\"id.remote.uid\"": {
+            "type": "string",
+            "description": "Filter by id from remote user. See MessageKey model"
+          },
+          "messageNumber": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "title": "GtQuery",
+                "type": "object",
+                "properties": {
+                  "$gt": {
+                    "type": [
+                      "number",
+                      "string",
+                      "integer"
+                    ]
+                  }
+                }
+              },
+              {
+                "title": "GteQuery",
+                "type": "object",
+                "properties": {
+                  "$gte": {
+                    "type": [
+                      "string",
+                      "number",
+                      "integer"
+                    ]
+                  }
+                }
+              },
+              {
+                "title": "LtQuery",
+                "type": "object",
+                "properties": {
+                  "$lt": {
+                    "type": [
+                      "string",
+                      "number",
+                      "integer"
+                    ]
+                  }
+                }
+              },
+              {
+                "title": "LteQuery",
+                "type": "object",
+                "properties": {
+                  "$lte": {
+                    "type": [
+                      "string",
+                      "number",
+                      "integer"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "GtQuery": {
+        "title": "GtQuery",
+        "type": "object",
+        "properties": {
+          "$gt": {
+            "type": [
+              "number",
+              "string",
+              "integer"
+            ]
+          }
+        }
+      },
+      "LtQuery": {
+        "title": "LtQuery",
+        "type": "object",
+        "properties": {
+          "$lt": {
+            "type": [
+              "string",
+              "number",
+              "integer"
+            ]
+          }
+        }
+      },
+      "GteQuery": {
+        "title": "GteQuery",
+        "type": "object",
+        "properties": {
+          "$gte": {
+            "type": [
+              "string",
+              "number",
+              "integer"
+            ]
+          }
+        }
+      },
+      "LteQuery": {
+        "title": "LteQuery",
+        "type": "object",
+        "properties": {
+          "$lte": {
+            "type": [
+              "string",
+              "number",
+              "integer"
+            ]
+          }
+        }
+      },
+      "MessageSort": {
+        "title": "Sort",
+        "type": "object",
+        "properties": {
+          "messageNumber": {
+            "type": "number",
+            "enum": [
+              -1,
+              1
+            ]
+          },
+          "t": {
+            "type": "number",
+            "enum": [
+              1,
+              -1
+            ]
+          }
+        }
+      },
+      "Message": {
+        "title": "Message",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "object",
+            "properties": {
+              "uid": {
+                "type": "string"
+              },
+              "server": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
+          "key": {
+            "type": "string"
+          },
+          "ack": {
+            "type": "number",
+            "description": "Still not functional"
+          },
+          "body": {
+            "type": "string"
+          },
+          "broadcast": {
+            "type": "boolean"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "cid": {
+            "type": "string"
+          },
+          "containsEmoji": {
+            "type": "boolean"
+          },
+          "dir": {
+            "type": "string"
+          },
+          "eventType": {
+            "type": "string"
+          },
+          "from": {
+            "title": "Id",
+            "type": "object",
+            "properties": {
+              "uid": {
+                "type": "string"
+              },
+              "server": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
+          "hsmEnabled": {
+            "type": "boolean"
+          },
+          "initialPageSize": {
+            "type": "number"
+          },
+          "isBizNotification": {
+            "type": "boolean"
+          },
+          "isBroadcastNotification": {
+            "type": "boolean"
+          },
+          "isDoc": {
+            "type": "boolean"
+          },
+          "isEphemeral": {
+            "type": "boolean"
+          },
+          "isFailed": {
+            "type": "boolean"
+          },
+          "isForwarded": {
+            "type": "boolean"
+          },
+          "isFrequentlyForwarded": {
+            "type": "boolean"
+          },
+          "isFutureproof": {
+            "type": "boolean"
+          },
+          "isGroupMsg": {
+            "type": "boolean"
+          },
+          "isGroupNotification": {
+            "type": "boolean"
+          },
+          "isGroupsV4InviteExpired": {
+            "type": "boolean"
+          },
+          "isMMS": {
+            "type": "boolean"
+          },
+          "isMedia": {
+            "type": "boolean"
+          },
+          "isNotification": {
+            "type": "boolean"
+          },
+          "isPSA": {
+            "type": "boolean"
+          },
+          "isPersistent": {
+            "type": "boolean"
+          },
+          "isProduct": {
+            "type": "boolean"
+          },
+          "isProductInquiry": {
+            "type": "boolean"
+          },
+          "isQuickReply": {
+            "type": "boolean"
+          },
+          "isQuotedMsgAvailable": {
+            "type": "boolean"
+          },
+          "isRTL": {
+            "type": "boolean"
+          },
+          "isRevoked": {
+            "type": "boolean"
+          },
+          "isSentByMe": {
+            "type": "boolean"
+          },
+          "isSentByMeFromWeb": {
+            "type": "boolean"
+          },
+          "isStatusV3": {
+            "type": "boolean"
+          },
+          "isUnreadType": {
+            "type": "boolean"
+          },
+          "isUnsentMedia": {
+            "type": "boolean"
+          },
+          "isUserCreatedType": {
+            "type": "boolean"
+          },
+          "isValidAlbumAsset": {
+            "type": "boolean"
+          },
+          "isValidGroupedSticker": {
+            "type": "boolean"
+          },
+          "messageNumber": {
+            "type": "number"
+          },
+          "notifyName": {
+            "type": "string"
+          },
+          "numTimesForwarded": {
+            "type": "number"
+          },
+          "rtl": {
+            "type": "number"
+          },
+          "self": {
+            "type": "string"
+          },
+          "sender": {
+            "title": "Id",
+            "type": "object",
+            "properties": {
+              "uid": {
+                "type": "string"
+              },
+              "server": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
+          "star": {
+            "type": "boolean"
+          },
+          "subtype": {
+            "type": "string"
+          },
+          "t": {
+            "type": "number"
+          },
+          "to": {
+            "title": "Id",
+            "type": "object",
+            "properties": {
+              "uid": {
+                "type": "string"
+              },
+              "server": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
+          "type": {
+            "type": "string"
+          },
+          "uploadHash": {
+            "type": "string",
+            "description": "When message is media"
+          },
+          "mediaObject": {
+            "type": "object",
+            "properties": {
+              "size": {
+                "type": "number"
+              },
+              "type": {
+                "type": "string"
+              },
+              "filehash": {
+                "type": "string"
+              }
+            }
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "decrypted": {
+            "type": "object",
+            "properties": {
+              "hash": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "Error": {
+        "title": "Error",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ]
+      },
+      "MessageQueued": {
+        "title": "MessageQueued",
+        "type": "object",
+        "properties": {
+          "cid": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "time": {
+            "type": "number"
+          },
+          "queue": {
+            "type": "boolean"
+          },
+          "ack": {
+            "type": "number"
+          },
+          "media": {
+            "type": "boolean"
+          },
+          "chatId": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
